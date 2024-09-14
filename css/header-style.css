@@ -1,0 +1,40 @@
+.header {
+    background-color: rgba(29, 29, 29, 0.863);
+    padding: 30px 10%; 
+    padding-top: 10px;
+    padding-bottom: 15px;
+    display: flex;
+    position: fixed;
+    width: 100%;
+    z-index: 100;
+    align-self: center;
+    justify-content: space-between;
+}
+
+
+.logo h1{                                                         
+    font-size: 65px;
+    color: #ffffff;
+    font-weight: 6000;
+    text-shadow: 0 0 25px rgb(36, 34, 34);
+    border: none;
+    text-align: left;
+    cursor: pointer;
+    margin-bottom: -0.3em;
+}
+
+.tagline{
+    font-size: 20px;
+    color: #858585;
+    display: flex;
+    margin-top: 0;
+}
+
+.navbar i{
+    font-size: 45px;
+    color: #ededed;
+    align-items: center;
+    font-weight: 500;
+    margin-left: 60px; 
+    margin-top: 35px;
+}

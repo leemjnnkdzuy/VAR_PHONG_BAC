@@ -1,0 +1,166 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body{
+    color: #ededed;
+    flex-direction: column;
+    display: flex;
+    height: 100%;
+    width: 100%;
+}
+
+@keyframes caret {
+    from {
+        border-color: white;
+    }
+    to {
+        border-color: transparent;
+    }
+}
+
+@keyframes typing {
+    from {
+        width: 0;
+    }
+    to {
+        width: 100%;
+    }
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(22, 22, 22, 0.863);
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    padding: 0 10%;
+}
+
+.home-content {
+    position: relative;
+    max-width: 405px;
+    font-size: 35px;
+    font-weight: 700;
+    line-height: 1.4;
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 5px solid white;
+    animation: typing 4s steps(40) 0.5s infinite normal both, caret 1s steps(2) infinite; 
+}
+
+.home-icon{
+    position: absolute;
+    bottom: 170px;
+    width: 180px;
+    display: flex;
+    justify-content: space-between;
+}
+.home-icon a{
+    position: relative;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 60px;
+    height: 60px;
+    background: transparent;
+    border: 2px solid white;
+    border-radius: 50%;
+    font-size: 30px;
+    color: white;
+    text-decoration: none;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.home-icon a:hover{
+    color: rgba(22, 22, 22, 0.863);
+}
+
+.home-icon a::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 100%;
+    background: white;
+    z-index: -1;
+    transform: 0.5s
+}
+
+.home-icon a:hover::before{
+    width: 100%;
+}
+
+.top-donate {
+    position: absolute;
+    flex: 0 0 200px;
+    overflow-y: auto;
+    top: 30%;
+    right: 10%;
+    width: 700px;
+    background-color: rgba(75, 75, 75, 0.8);
+    padding: 10px;
+    border-radius: 20px;
+    box-shadow: 0 0 10px rgba(153, 153, 153, 0.1);
+
+    
+}
+
+.top-donate h2 {
+    margin: 10px 0 10px 0;
+    font-size: 25px;
+    text-align: center;
+    border-bottom: 2px solid #5c5c5c;
+    padding-bottom: 10px;
+}
+
+.top-donate ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    max-height: 400px; /* Chiều cao cố định của khung donate */
+    overflow-y: auto; /* Hiển thị thanh cuộn dọc */
+    padding: 10px;
+}
+
+.top-donate li {
+    margin-bottom: 5px;
+    font-size: 16px;
+    margin-left: 20px;
+}
+
+
+.top-donate ul::-webkit-scrollbar {
+    width: 12px; /* Độ rộng của thanh cuộn */
+}
+
+.top-donate ul::-webkit-scrollbar-track {
+    background: #646464; /* Màu nền của track */
+    border-radius: 10px;
+}
+
+.top-donate ul::-webkit-scrollbar-thumb {
+    background: #888; /* Màu của thanh cuộn */
+    border-radius: 10px;
+}
+
+.top-donate ul::-webkit-scrollbar-thumb:hover {
+    background: #555; /* Màu của thanh cuộn khi hover */
+}
+
+.top-donate li {
+    margin-bottom: 5px;
+    font-size: 16px;
+    margin-left: 20px;
+}
