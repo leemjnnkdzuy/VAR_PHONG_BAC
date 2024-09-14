@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', function() {
             });
 
             data.sort((a, b) => b.Credit - a.Credit);
-            const top5Donors = data.slice(0, 5);
+            const top5Donors = data.slice(0, 50);
 
             const donateList = document.getElementById('donate-list');
 
@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
 
                 donorName.textContent = name;
-                donorInfo.textContent = `${donor.Credit.toLocaleString('vi-VN')} VND | Ngày donate: ${donor.Date}`;
+                donorInfo.textContent = `Số tiền: ${donor.Credit.toLocaleString('vi-VN')} VND | Ngày donate: ${donor.Date}`;
                 donorDescription.textContent = `Mô tả: ${donor.Description}`;
 
                 listItem.appendChild(donorName);
