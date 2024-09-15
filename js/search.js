@@ -1,6 +1,6 @@
 let transactions = [];
 let currentPage = 1;
-const itemsPerPage = 100; // Số lượng mục trên mỗi trang
+const itemsPerPage = 100;
 
 // Hàm để hiển thị kết quả tìm kiếm
 function displayResults(results) {
@@ -25,7 +25,6 @@ function displayResults(results) {
     });
 }
 
-// Hàm để tải dữ liệu từ file JSON
 async function loadData() {
     try {
         const response = await fetch('../data/01-12.json');
@@ -38,15 +37,24 @@ async function loadData() {
     }
 }
 
-// Hàm để thực hiện tìm kiếm
 async function performSearch() {
-    const query = document.getElementById('search-input').value.toLowerCase();
-    const filterValue = document.querySelector('.filter-box select').value;
+    const queryElement = document.getElementById('search-input');
+    const filterElement = document.querySelector('.filter-box select');
+    const timeElement = document.querySelector('#time-input input[type="date"]');
+
+    if (!queryElement || !filterElement || !timeElement) {
+        console.error('One or more search/filter elements not found.');
+        return;
+    }
+
+    const query = queryElement.value.toLowerCase();
+    const filterValue = filterElement.value;
+    const timeValue = timeElement.value;
 
     let filteredTransactions;
 
-    if (query === '') {
-        // Nếu thanh tìm kiếm rỗng, lấy ngẫu nhiên 100 kết quả
+    if (query === '' && filterValue === '' && timeValue === '') {
+        // Nếu thanh tìm kiếm rỗng, bộ lọc không được chọn và thời gian không được chọn, lấy ngẫu nhiên 100 kết quả
         filteredTransactions = transactions.sort(() => 0.5 - Math.random()).slice(0, 100);
     } else {
         filteredTransactions = transactions.filter(transaction =>
@@ -82,6 +90,14 @@ async function performSearch() {
                 }
             });
         }
+
+        if (timeValue) {
+            filteredTransactions = filteredTransactions.filter(transaction => {
+                const transactionDate = new Date(transaction.Date);
+                const filterDate = new Date(timeValue);
+                return transactionDate >= filterDate;
+            });
+        }
     }
 
     displayPage(filteredTransactions, currentPage);
@@ -107,23 +123,54 @@ function updatePagination(totalItems, currentPage, data) {
 
     const totalPages = Math.ceil(totalItems / itemsPerPage);
 
-    for (let i = 1; i <= totalPages; i++) {
+    if (totalPages <= 1) return; // Không cần phân trang nếu chỉ có một trang
+
+    const createButton = (text, page) => {
         const button = document.createElement('button');
-        button.textContent = i;
+        button.textContent = text;
         button.classList.add('pagination-button');
-        if (i === currentPage) {
+        if (page === currentPage) {
             button.classList.add('active');
         }
         button.addEventListener('click', () => {
-            currentPage = i;
+            currentPage = page;
             displayPage(data, currentPage);
             updatePagination(totalItems, currentPage, data);
         });
-        paginationContainer.appendChild(button);
+        return button;
+    };
+
+    if (currentPage > 1) {
+        paginationContainer.appendChild(createButton('<', currentPage - 1));
+    }
+
+    paginationContainer.appendChild(createButton(1, 1));
+
+    if (currentPage > 3) {
+        const dots = document.createElement('span');
+        dots.textContent = '...';
+        paginationContainer.appendChild(dots);
+    }
+
+    for (let i = Math.max(2, currentPage - 1); i <= Math.min(totalPages - 1, currentPage + 1); i++) {
+        paginationContainer.appendChild(createButton(i, i));
+    }
+
+    if (currentPage < totalPages - 2) {
+        const dots = document.createElement('span');
+        dots.textContent = '...';
+        paginationContainer.appendChild(dots);
+    }
+
+    if (totalPages > 1) {
+        paginationContainer.appendChild(createButton(totalPages, totalPages));
+    }
+
+    if (currentPage < totalPages) {
+        paginationContainer.appendChild(createButton('>', currentPage + 1));
     }
 }
 
-// Đảm bảo rằng các phần tử tồn tại trước khi thêm sự kiện
 document.addEventListener('DOMContentLoaded', async () => {
     const searchButton = document.getElementById('search-button');
 
