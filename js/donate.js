@@ -35,8 +35,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
 
                 donorName.textContent = name;
-                donorInfo.textContent = `Số tiền: ${donor.Credit.toLocaleString('vi-VN')} VND | Ngày donate: ${donor.Date}`;
-                donorDescription.textContent = `Mô tả: ${donor.Description}`;
+                donorInfo.textContent = `Số tiền: ${donor.Credit.toLocaleString('vi-VN')} VND | Ngày ủng hộ: ${donor.Date}`;
+                donorDescription.textContent = `Nội dung: ${donor.Description}`;
 
                 listItem.appendChild(donorName);
                 listItem.appendChild(donorInfo);

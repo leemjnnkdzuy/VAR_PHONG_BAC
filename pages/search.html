@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VAR Phông Bạc</title>
+
+    <!--icon link-->
+    <link rel="shortcut icon" href="../assets/icon.ico" type="image/x-icon">
+
+    <!--css link-->
+    <link rel="stylesheet" href="../css/search-style.css">
+    <link rel="stylesheet" href="../css/header-style.css">
+
+    <!--remixicons link-->
+    <link rel='stylesheet' href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css'>
+
+    <!--google fonts link-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap">
+</head>
+<body>
+    <header class="header">
+        <div>
+            <a class="logo" id="logo-container">
+                <h1>
+                    VAR
+                </h1>
+                <span class="tagline">
+                    Phông Bạc X LeeMjnnkDzuy
+                </span>
+            </a>
+        </div>
+
+        <nav class="navbar">
+            <!-- <a href="statistical.html">
+                <i class='bx bxs-objects-vertical-bottom'></i>
+            </a> -->
+            <a href="search.html">
+                <i class='bx bx-search-alt-2'></i>
+            </a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="search-box">
+            <input type="text" id="search-input" placeholder="Nhập từ khóa tìm kiếm">
+        </div>
+        <div class="filter-box">
+            <select>
+                <option value="">Chọn giá trị tìm kiếm</option>
+                <option value="value1">0VND - 100,000VND</option>
+                <option value="value2">100,000VND - 200,000VND</option>
+                <option value="value3">200,000VND - 500,000VND</option>
+                <option value="value4">500,000VND - 1,000,000VND</option>
+                <option value="value5">1,000,000VND - 2,000,000VND</option>
+                <option value="value6">2,000,000VND - 5,000,000VND</option>
+                <option value="value7">5,000,000VND - 10,000,000VND</option>
+                <option value="value8">10,000,000VND - 100,000,000VND</option>
+                <option value="value9">100,000,000VND - 500,000,000VND</option>
+                <option value="value10">Trên 500,000,000VND</option>
+            </select>
+        </div>
+        <div class="date-box">
+            <input type="date">
+        </div>
+        <div class="button-box">
+            <button type="button" id="search-button"><i class='bx bx-search'></i></button>
+        </div>
+    </div>
+
+    <div class="results-container">
+        <table class="results-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Tên Tài Khoản</th>
+                    <th>Mã Giao Dịch</th>
+                    <th>Thời Gian</th>
+                    <th>Số Tiền Giao Dịch</th>
+                    <th>Nội Dung</th>
+                </tr>
+            </thead>
+            <tbody id="results-body">
+                <!-- Các hàng dữ liệu sẽ được thêm vào đây -->
+            </tbody>
+        </table>
+    </div>
+
+    <div id="pagination" class="pagination">
+        <!-- Các nút phân trang sẽ được thêm vào đây -->
+    </div>
+
+    <script src="../js/search.js"></script>
+    <script src="../js/main.js"></script>
+</body>
+</html>

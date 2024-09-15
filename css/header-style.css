@@ -9,6 +9,7 @@
     z-index: 100;
     align-self: center;
     justify-content: space-between;
+    
 }
 
 
@@ -21,6 +22,7 @@
     text-align: left;
     cursor: pointer;
     margin-bottom: -0.3em;
+    cursor: pointer;
 }
 
 .tagline{
